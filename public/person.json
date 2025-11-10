@@ -1,0 +1,56 @@
+[
+  {
+    "id": "5",
+    "name": "钱七",
+    "email": "qianqi@ex.com",
+    "phone": "13500135000",
+    "status": 1,
+    "creditScore": 720,
+    "gender": 2
+  },
+  {
+    "id": "6",
+    "name": "孙八",
+    "email": "sunba@ex.com",
+    "phone": "13400134000",
+    "status": 1,
+    "creditScore": 690,
+    "gender": 1
+  },
+  {
+    "id": "7",
+    "name": "周九",
+    "email": "zhoujiu@ex.com",
+    "phone": "13300133000",
+    "status": 0,
+    "creditScore": 580,
+    "gender": 2
+  },
+  {
+    "id": "8",
+    "name": "吴十",
+    "email": "wushi@ex.com",
+    "phone": "13200132000",
+    "status": 1,
+    "creditScore": 810,
+    "gender": 1
+  },
+  {
+    "id": "9",
+    "name": "郑十一",
+    "email": "zhengshiyi@ex.com",
+    "phone": "13100131000",
+    "status": 1,
+    "creditScore": 730,
+    "gender": 2
+  },
+  {
+    "id": "10",
+    "name": "王十二",
+    "email": "wangshier@ex.com",
+    "phone": "13000130000",
+    "status": 2,
+    "creditScore": 670,
+    "gender": 0
+  }
+]

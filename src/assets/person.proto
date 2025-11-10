@@ -1,0 +1,15 @@
+syntax = "proto3"; // 使用 proto3 语法
+
+message Person {
+  string id = 1;
+  string name = 2;
+  string email = 3;
+  string phone = 4;
+  int32 status = 5;
+  int32 credit_score = 6;
+  int32 gender = 7;
+}
+
+message PersonList {
+  repeated Person persons = 1;
+}

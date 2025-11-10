@@ -2,6 +2,7 @@
 import { ref, reactive, onMounted } from 'vue';
 import { message, Modal } from 'ant-design-vue';
 import { globalTool } from './components/tool';
+import ProtoInfo from './components/ProtoInfo.vue';
 // 用户类型定义
 interface User {
   id: string;
@@ -214,15 +215,15 @@ const searchUsers = () => {
     const nameMatch = searchParams.name ? user.name.toLowerCase().includes(searchParams.name.toLowerCase()) : true;
     const emailMatch = searchParams.email ? user.email.toLowerCase().includes(searchParams.email.toLowerCase()) : true;
     const phoneMatch = searchParams.phone ? user.phone.includes(searchParams.phone) : true;
-    
+
     // 精确匹配状态和性别
     const statusMatch = searchParams.status === null || user.status === searchParams.status;
     const genderMatch = searchParams.gender === null || user.gender === searchParams.gender;
-    
+
     // 信用分范围搜索
-    const creditScoreMatch = searchParams.creditScore ? 
+    const creditScoreMatch = searchParams.creditScore ?
       user.creditScore.toString().includes(searchParams.creditScore) : true;
-    
+
     return nameMatch && emailMatch && phoneMatch && statusMatch && genderMatch && creditScoreMatch;
   });
   pagination.total = filteredUsers.length;
@@ -326,7 +327,7 @@ const resetForm = () => {
 // 撤销操作
 const undoOperation = () => {
   const lastOperation = operationHistory.value.pop();
-  console.log('lastOperation',lastOperation);
+  console.log('lastOperation', lastOperation);
   if (lastOperation) {
     users.value = lastOperation;
     saveUsers();
@@ -335,6 +336,8 @@ const undoOperation = () => {
     message.warning('没有可撤销的操作');
   }
 };
+
+const isProtoModalVisible = ref(false);
 </script>
 
 <template>
@@ -371,6 +374,7 @@ const undoOperation = () => {
       </a-form-item>
       <a-form-item>
         <a-button type="primary" @click="searchUsers">搜索</a-button>
+        <a-button type="primary" @click="isProtoModalVisible = true">Proto</a-button>
       </a-form-item>
     </a-form>
 
@@ -435,6 +439,16 @@ const undoOperation = () => {
           <a-input-number v-model:value="formState.creditScore" :min="0" :max="1000" placeholder="请输入信用分" />
         </a-form-item>
       </a-form>
+    </a-modal>
+    <a-modal v-model:open="isProtoModalVisible" title="Proto读取" @ok="isProtoModalVisible = false" width="100%" wrap-class-name="full-modal">
+      <Suspense>
+        <template #default>
+          <ProtoInfo />
+        </template>
+        <template #fallback>
+          <div>正在加载 ProtoInfo...</div>
+        </template>
+      </Suspense>
     </a-modal>
   </div>
 </template>

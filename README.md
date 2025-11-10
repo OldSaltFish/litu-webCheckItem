@@ -3,3 +3,7 @@
 
 ## 在线预览
 [在线预览](http://litu.dreamsoul.cn)
+
+## 说明
+使用proto提供的cli工具，生成了person-proto.js和person-proto.d.ts两个文件。  
+使用public/person.json模拟数据，将其转化为protobuf对象，然后在前端展示。  
