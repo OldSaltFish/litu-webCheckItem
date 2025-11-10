@@ -6,7 +6,6 @@ const fetchData = async () => {
     const res = await fetch('/person.json');
     const data = await res.json();
     const newPersonList = PersonList.fromObject({ persons: data });
-    console.log(newPersonList.persons);
     return newPersonList.persons;
 };
 const persons = await fetchData();
@@ -26,8 +25,7 @@ const paginatedUsers = () => {
 };
 </script>
 <template>
-    <!-- 数据不更新，使用v-once -->
-    <a-table v-once :columns="[
+    <a-table :columns="[
         { title: 'ID', dataIndex: 'id' },
         { title: '姓名', dataIndex: 'name' },
         { title: '邮箱', dataIndex: 'email' },
